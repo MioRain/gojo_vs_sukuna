@@ -5,14 +5,13 @@ const close = document.querySelector('.close')
 const submit = document.querySelector('.submit')
 
 const postUrl = 'https://script.google.com/macros/s/AKfycbwFLz67VS_dxKgAnbFguTcWMD6YYS8bGm3wPaIM5a_p6yrxXRHNzgJPVyWUbHjGQd1w/exec'
-const voted = JSON.parse(localStorage.getItem('voted'))
 let time = ''
 let voter = ''
 let supporter = ''
 let content = ''
 
 gojo.addEventListener('click', () => {
-  if (voted) {
+  if (JSON.parse(localStorage.getItem('voted'))) {
     alert('已經投過票囉')
   } else {
     vote.click()
@@ -22,7 +21,7 @@ gojo.addEventListener('click', () => {
 })
 
 sukuna.addEventListener('click', () => {
-  if (voted) {
+  if (JSON.parse(localStorage.getItem('voted'))) {
     alert('已經投過票囉')
   } else {
     vote.click()
@@ -59,6 +58,7 @@ submit.addEventListener('click', () => {
       console.log(e);
     });
     localStorage.setItem('voted', true)
+    alert('投票完成')
     close.click()
   } else {
     alert('請輸入暱稱與留言')
